@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className="navbar">
       <Link to="/">Home</Link>
       <Link to="/products">Products</Link>
-      <Link to="/cart">
+      <Link to="/cart" className="navbarc">
         Cart <span className="nav-cart-count">({cartCount})</span>
       </Link>
     </nav>

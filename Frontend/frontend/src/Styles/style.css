@@ -19,7 +19,6 @@ body {
   gap: 30px;
   justify-content: center;
   font-size: 1.1rem;
-  position: relative;
 }
 
 .navbar a {
@@ -28,13 +27,17 @@ body {
   transition: color 0.3s;
 }
 
+.navbarc{
+  position: relative;
+}
+
 .navbar a:hover {
   color: #00bcd4;
 }
 
 .nav-cart-count {
   position: absolute;
-  top: -8px !important;
+  top: -5px !important;
   right: -25px !important;
   background: red !important;
   border-radius: 50%;
@@ -230,6 +233,20 @@ body {
   margin: 20px 20px;
 }
 
+.clear-cart-btn{
+  background-color: red;
+  border: none;
+  padding: 12px 20px !important;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: -10px;
+  color: white;
+  font-size: 1rem;
+}
+
+.clear-cart-btn:hover{
+  background-color: rgb(237, 5, 5);
+}
 .go-back-btn {
   background-color: #6c757d;
   border: none;

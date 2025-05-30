@@ -18,3 +18,12 @@ exports.getCartItems = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch cart items" });
   }
 };
+
+exports.clearCart = async (req, res) => {
+  try {
+    await Cart.deleteMany({});
+    res.status(200).json({ message: "Cart cleared successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to clear cart" });
+  }
+};
