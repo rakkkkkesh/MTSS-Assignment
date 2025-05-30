@@ -9,7 +9,9 @@ const Cart = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const BASE_URL = "http://localhost:5000/api";
+  // const BASE_URL = "http://localhost:5000/api";
+  const BASE_URL = "https://mtss-assignment.onrender.com/api";
+
 
   useEffect(() => {
     axios.get(`${BASE_URL}/cart`)

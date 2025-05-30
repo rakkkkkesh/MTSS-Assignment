@@ -6,25 +6,27 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  const [cartCount, setCartCount] = useState(0);
-  const BASE_URL = "http://localhost:5000/api";
+    const [cartCount, setCartCount] = useState(0);
 
-  const fetchCartCount = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/cart`);
-      setCartCount(res.data.length);
-    } catch (error) {
-      console.error("Error fetching cart count", error);
-    }
-  };
+    // const BASE_URL = "http://localhost:5000/api";
+    const BASE_URL = "https://mtss-assignment.onrender.com/api";
 
-  useEffect(() => {
-    fetchCartCount();
-  }, []);
+    const fetchCartCount = async () => {
+        try {
+            const res = await axios.get(`${BASE_URL}/cart`);
+            setCartCount(res.data.length);
+        } catch (error) {
+            console.error("Error fetching cart count", error);
+        }
+    };
 
-  return (
-    <CartContext.Provider value={{ cartCount, setCartCount, fetchCartCount }}>
-      {children}
-    </CartContext.Provider>
-  );
+    useEffect(() => {
+        fetchCartCount();
+    }, []);
+
+    return (
+        <CartContext.Provider value={{ cartCount, setCartCount, fetchCartCount }}>
+            {children}
+        </CartContext.Provider>
+    );
 };
