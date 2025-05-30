@@ -6,7 +6,10 @@ require("dotenv").config();
 const cartRoutes = require("./Routes/cartRoutes");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['https://mtss-assignment.netlify.app', 'http://localhost:5000'], // Add your frontend URL
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/api/cart", cartRoutes);
