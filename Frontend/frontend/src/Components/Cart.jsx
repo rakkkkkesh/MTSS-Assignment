@@ -4,12 +4,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useCart } from "../Context/CartContext";
 import "../Styles/style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Cart = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-
   const { setCartCount } = useCart();
 
   // const BASE_URL = "http://localhost:5000/api";
@@ -27,7 +28,7 @@ const Cart = () => {
       });
   }, []);
 
-  const clearCart = async () => {
+  const handleClearCart = async () => {
     try {
       await axios.delete(`${BASE_URL}/cart`);
       setItems([]);
@@ -35,6 +36,8 @@ const Cart = () => {
       toast.success("Cart cleared successfully");
     } catch (error) {
       toast.error("Failed to clear cart");
+    } finally {
+      setShowModal(false);
     }
   };
 
@@ -75,9 +78,30 @@ const Cart = () => {
 
           <div className="cart-total-row">
             <h3>Total Price: ${total.toFixed(2)}</h3>
-            <button onClick={clearCart} className="clear-cart-btn">Clear Cart</button>
-            <button onClick={() => navigate(-1)} className="cart-go-back-btn">Go Back</button>
+            <button onClick={() => setShowModal(true)} className="clear-cart-btn btn btn-danger me-2">Clear Cart</button>
+            <button onClick={() => navigate(-1)} className="cart-go-back-btn btn btn-secondary">Go Back</button>
           </div>
+
+          {/* Modal */}
+          {showModal && (
+            <div className="modal show d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title">Confirm Clear Cart</h5>
+                    <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+                  </div>
+                  <div className="modal-body">
+                    <p>Are you sure you want to clear your cart?</p>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="btn btn-danger" onClick={handleClearCart}>Clear Cart</button>
+                    <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>
