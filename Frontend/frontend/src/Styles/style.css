@@ -27,7 +27,7 @@ body {
   transition: color 0.3s;
 }
 
-.navbarc{
+.navbarc {
   position: relative;
 }
 
@@ -233,7 +233,7 @@ body {
   margin: 20px 20px;
 }
 
-.clear-cart-btn{
+.clear-cart-btn {
   background-color: red;
   border: none;
   padding: 12px 20px !important;
@@ -244,9 +244,10 @@ body {
   font-size: 1rem;
 }
 
-.clear-cart-btn:hover{
+.clear-cart-btn:hover {
   background-color: rgb(237, 5, 5);
 }
+
 .go-back-btn {
   background-color: #6c757d;
   border: none;
@@ -309,7 +310,6 @@ body {
 
   .cart {
     max-width: 300px;
-    margin: 0 auto;
   }
 
   .cart-table {
