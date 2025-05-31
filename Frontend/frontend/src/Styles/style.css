@@ -185,11 +185,11 @@ body {
 
 .cart h2 {
   text-align: center;
+  margin: 20px 0;
 }
 
 .table-responsive {
   overflow-x: auto;
-  margin-top: 20px;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
 }
@@ -310,6 +310,10 @@ body {
 
   .cart {
     max-width: 300px;
+  }
+
+  .cart h2 {
+    margin: 10px 0;
   }
 
   .cart-table {
